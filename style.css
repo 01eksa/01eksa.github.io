@@ -100,6 +100,10 @@ nav a.active {
     
 }
 
+nav a img {
+    object-fit: cover;
+}
+
 main {
     display: grid;
     grid-template-columns: 3fr 2fr;

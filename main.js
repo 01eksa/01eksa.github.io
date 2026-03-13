@@ -19,6 +19,13 @@ function setLang(lang) {
     document.documentElement.lang = lang.toLowerCase();
 }
 
+function showExp(){
+    const [y, m] = $(this).attr('data-start').split('-').map(Number);
+    const months = getMonths(y, m);
+    $(this).text(expLabel(months));
+    $(this).addClass(expColor(months));
+}
+
 function getMonths(startYear, startMonths) {
     const now = new Date();
     const res = (now.getFullYear() - startYear) * 12 + (now.getMonth() + 1 - startMonths);
@@ -40,11 +47,6 @@ $(()=>{
     $('.set-en').on('click', () => setLang('EN'));
     $('.set-uk').on('click', () => setLang('UK'));
     setLang('EN');
-    $('.exp[data-start]').each(function() {
-        const [y, m] = $(this).attr('data-start').split('-').map(Number);
-        const months = getMonths(y, m);
-        $(this).text(expLabel(months));
-        $(this).addClass(expColor(months));
-    });
+    $('.exp[data-start]').each(showExp);
     $('body').css('opacity', '1');
 })

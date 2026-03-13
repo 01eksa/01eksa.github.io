@@ -1,3 +1,13 @@
+class Storage{
+    static get(key){
+        return JSON.parse(localStorage.getItem(key)) || null;
+    }
+
+    static set(key, value){
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+}
+
 function setLang(lang) {
     switch (lang) {
         case 'EN':
@@ -17,6 +27,7 @@ function setLang(lang) {
     }
 
     document.documentElement.lang = lang.toLowerCase();
+    Storage.set('lang', lang)
 }
 
 function showExp(){
@@ -66,7 +77,9 @@ $(()=>{
     $('.set-en').on('click', () => setLang('EN'));
     $('.set-uk').on('click', () => setLang('UK'));
     $('#gmail').on('click', copyEmail);
-    setLang('EN');
+
+
+    setLang(Storage.get('lang') || 'EN');
     $('.exp[data-start]').each(showExp);
     $('body').css('opacity', '1');
 })

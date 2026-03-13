@@ -43,9 +43,29 @@ function expColor(months){
     return 'light-cyan';
 }
 
+function copyEmail(event){
+    event.preventDefault();
+    const textElement = $(this).children('span');
+
+    // avoid scrapers
+    const email = atob('MDFla3NhLm9wZW5AZ21haWwuY29t')
+
+    navigator.clipboard.writeText(email).then(() => {
+
+        const originalText = textElement.text();
+        textElement.text('Copied!');
+        
+        setTimeout(() => {
+            textElement.text(originalText);
+        }, 1500);
+
+    }).catch(err => {alert('Copy failed. Here is email: ' + email); console.log(err);});
+}
+
 $(()=>{
     $('.set-en').on('click', () => setLang('EN'));
     $('.set-uk').on('click', () => setLang('UK'));
+    $('#gmail').on('click', copyEmail);
     setLang('EN');
     $('.exp[data-start]').each(showExp);
     $('body').css('opacity', '1');

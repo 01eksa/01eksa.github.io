@@ -107,7 +107,8 @@ nav a img {
 main {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: auto;
+    grid-template-rows: min-content;
+    align-content: start;
     gap: calc(4*var(--spacer));
 }
 
@@ -319,7 +320,7 @@ footer {
     padding: calc(2*var(--spacer));
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 900px) {
     main {
         grid-template-columns: 2fr 3fr 4fr;
     }

@@ -259,7 +259,7 @@ section.skills {
     align-items: center;
     justify-content: center;
 
-    width: 48px;
+    width: 60px;
     padding: calc(2*var(--spacer));
     margin: var(--spacer);
     border-radius: calc(3*var(--spacer));

@@ -44,7 +44,7 @@ function getMonths(startYear, startMonths) {
 }
 
 function expLabel(months) {
-    return months < 12 ? `${months}m` : `${Math.floor(months / 12)}y`;
+    return months < 12 ? `${months}m` : `${Math.floor(months / 12)}${months % 12 > 5 ? '.5' : ''}y`;
 }
 
 function expColor(months){
